@@ -1,0 +1,19 @@
+version: "3.3"
+
+volumes:
+  mysql_data:
+
+services:
+  mysql:
+    image: percona:5.7
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+
+  aspace:
+    build:
+      context: "."
+    ports:
+      - "127.0.0.1:8080:3000"
+      - "127.0.0.1:8089:4567"

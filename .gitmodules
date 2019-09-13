@@ -1,3 +1,15 @@
 [submodule "archivesspace"]
 	path = archivesspace
 	url = https://github.com/archivesspace/archivesspace.git
+[submodule "plugins/digitization_work_order_plugin"]
+	path = plugins/digitization_work_order_plugin
+	url = https://github.com/NYULibraries/digitization_work_order_plugin
+[submodule "plugins/nyu_ead_export_plugin"]
+	path = plugins/nyu_ead_export_plugin
+	url = https://github.com/NYULibraries/nyu_ead_export_plugin
+[submodule "plugins/nyu_marcxml_export_plugin"]
+	path = plugins/nyu_marcxml_export_plugin
+	url = https://github.com/NYULibraries/nyu_marcxml_export_plugin
+[submodule "plugins/nyu_sso_plugin"]
+	path = plugins/nyu_sso_plugin
+	url = https://github.com/NYULibraries/nyu_sso_plugin
