@@ -25,6 +25,4 @@ RUN curl -Oq http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.39/m
 
 RUN build/run bootstrap
 
-RUN build/run db:migrate
-
 ENTRYPOINT ["supervisord", "-c", "supervisord/api.conf"]

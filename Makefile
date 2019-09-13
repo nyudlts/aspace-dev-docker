@@ -6,9 +6,12 @@ help:  ## Print this help message.
 start-mysql:	## start mysql server
 	docker-compose up -d mysql
 
-create-db:	##	create aspace database
+create-db:		## create aspace database
 	docker-compose exec mysql mysql -u root -p -e 'create database archivesspace default character set utf8;'
 	docker-compose exec mysql mysql -u root -p -e "grant all on archivesspace.* to 'archivesspace'@'%' identified by 'archivesspace';"
+
+migrate-db:		## migrate the database
+	docker-compose exec aspace /opt/archivesspace/build/run db:migrate
 
 mysql-shell: 	## access mysql database
 	docker-compose exec mysql mysql -u root -p
@@ -20,4 +23,4 @@ start-frontend:	## start aspace frontend
 	docker-compose exec aspace /opt/archivesspace/build/run frontend:devserver
 
 start-backend:	## start aspace backend and indexer
-	docker-compose up
+	docker-compose up aspace
