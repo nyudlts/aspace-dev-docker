@@ -19,8 +19,11 @@ mysql-shell: 	## access mysql database
 aspace-shell:	## access apsace container shell
 	docker-compose exec aspace /bin/bash
 
+nuke-db:	## access apsace container shell
+	docker-compose exec aspace /opt/arcivesspace/build/run db:nuke
+
 start-frontend:	## start aspace frontend
 	docker-compose exec aspace /opt/archivesspace/build/run frontend:devserver
 
 start-backend:	## start aspace backend and indexer
-	docker-compose up aspace
+	docker-compose up -d aspace
