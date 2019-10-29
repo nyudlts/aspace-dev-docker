@@ -33,6 +33,7 @@ stop-aspace:	## update the nyu plugins
 	docker-compose down aspace
 
 start-all:	## update the nyu plugins
+	docker-compose up -d mysql
 	docker-compose up -d aspace
 	docker-compose exec aspace /opt/archivesspace/build/run frontend:devserver
 
