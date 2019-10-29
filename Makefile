@@ -27,3 +27,12 @@ start-frontend:	## start aspace frontend
 
 start-backend:	## start aspace backend and indexer
 	docker-compose up -d aspace
+
+
+stop-aspace:	## update the nyu plugins
+	docker-compose down aspace
+
+start-all:	## update the nyu plugins
+	docker-compose up -d aspace
+	docker-compose exec aspace /opt/archivesspace/build/run frontend:devserver
+
