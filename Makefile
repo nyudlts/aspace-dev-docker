@@ -8,8 +8,8 @@ start-mysql:	## start mysql server
 
 init:	## start mysql server
 	docker-compose up -d mysql
-	docker-compose exec mysql mysql -u root -p -e 'create database archivesspace default character set utf8;'
-	docker-compose exec mysql mysql -u root -p -e "grant all on archivesspace.* to 'archivesspace'@'%' identified by 'archivesspace';"
+	docker-compose exec mysql mysql -u root -ppassword -e 'create database archivesspace default character set utf8;'
+	docker-compose exec mysql mysql -u root -ppassword -e "grant all on archivesspace.* to 'archivesspace'@'%' identified by 'archivesspace';"
 	docker-compose up -d aspace
 	docker-compose exec aspace /opt/archivesspace/build/run db:migrate
 	docker-compose exec aspace /opt/archivesspace/build/run frontend:devserver
