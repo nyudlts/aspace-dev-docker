@@ -6,6 +6,15 @@ help:  ## Print this help message.
 start-mysql:	## start mysql server
 	docker-compose up -d mysql
 
+init:	## start mysql server
+	docker-compose up -d mysql
+	docker-compose exec mysql mysql -u root -p -e 'create database archivesspace default character set utf8;'
+	docker-compose exec mysql mysql -u root -p -e "grant all on archivesspace.* to 'archivesspace'@'%' identified by 'archivesspace';"
+	docker-compose up -d aspace
+	docker-compose exec aspace /opt/archivesspace/build/run db:migrate
+	docker-compose exec aspace /opt/archivesspace/build/run frontend:devserver
+
+
 create-db:		## create aspace database
 	docker-compose exec mysql mysql -u root -p -e 'create database archivesspace default character set utf8;'
 	docker-compose exec mysql mysql -u root -p -e "grant all on archivesspace.* to 'archivesspace'@'%' identified by 'archivesspace';"
