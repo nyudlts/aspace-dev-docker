@@ -1,5 +1,5 @@
 # ASPACE-DOCKER
-builds an aspace dev environment with nyu plugins.
+builds an aspace dev environment with nyu plugins with docker-compose.
 
 ### Install
 1. $ git clone https://github.com/nyudlts/aspace-dev-docker.git
