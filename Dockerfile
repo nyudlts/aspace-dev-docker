@@ -14,9 +14,9 @@ RUN pip install --upgrade pip
 RUN pip install supervisor supervisor-stdout
 
 COPY archivesspace /opt/archivesspace
-COPY plugins/nyu_ead_export_plugin /opt/archivesspace/nyu_ead_export_plugin
-COPY plugins/nyu_marcxml_export_plugin /opt/archivesspace/nyu_marcxml_export_plugin
-COPY plugins/digitization_work_order_plugin /opt/archivesspace/digitization_work_order_plugin
+COPY plugins/nyu_ead_export_plugin /opt/archivesspace/plugins/nyu_ead_export_plugin
+COPY plugins/nyu_marcxml_export_plugin /opt/archivesspace/plugins/nyu_marcxml_export_plugin
+COPY plugins/digitization_work_order_plugin /opt/archivesspace/plugins/digitization_work_order_plugin
 COPY plugins/nyu_sso_plugin /opt/archivesspace/
 COPY config/config.rb /opt/archivesspace/common/config/config.rb
 
