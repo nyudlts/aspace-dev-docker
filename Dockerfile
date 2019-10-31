@@ -8,7 +8,8 @@ LABEL org.label-schema.schema-version="1.0" \
 
 RUN yum update
 RUN yum install -y epel-release
-RUN yum install -y java-1.8.0-openjdk curl git python-pip make gcc
+RUN yum --setopt=group_package_types=mandatory,default,optional group install -y  "Development Tools"
+RUN yum install -y java-1.8.0-openjdk curl git python-pip
 RUN pip install --upgrade pip
 RUN pip install supervisor supervisor-stdout
 
