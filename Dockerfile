@@ -6,7 +6,7 @@ LABEL org.label-schema.schema-version="1.0" \
     org.label-schema.license="GPLv2" \
     org.label-schema.build-date="20190801"
 
-RUN yum update
+RUN yum update -y
 RUN yum install -y epel-release
 RUN yum --setopt=group_package_types=mandatory,default,optional group install -y  "Development Tools"
 RUN yum install -y java-1.8.0-openjdk curl git python-pip
