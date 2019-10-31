@@ -6,17 +6,15 @@ LABEL org.label-schema.schema-version="1.0" \
     org.label-schema.license="GPLv2" \
     org.label-schema.build-date="20190801"
 
+RUN yum update
 RUN yum install -y epel-release
-
-RUN yum install -y java-1.8.0-openjdk curl git python-pip
-
-RUN yum --setopt=group_package_types=mandatory,default,optional group install -y  "Development Tools"
-
+RUN yum install -y java-1.8.0-openjdk curl git python-pip make gcc
+RUN pip install --upgrade pip
 RUN pip install supervisor supervisor-stdout
 
 COPY archivesspace /opt/archivesspace
 COPY plugins/nyu_ead_export_plugin /opt/archivesspace/nyu_ead_export_plugin
-COPY plugins/nyu_marcxml_export_plugin /opt/archivesspace/nyu_marccml_export_plugin
+COPY plugins/nyu_marcxml_export_plugin /opt/archivesspace/nyu_marcxml_export_plugin
 COPY plugins/digitization_work_order_plugin /opt/archivesspace/digitization_work_order_plugin
 COPY plugins/nyu_sso_plugin /opt/archivesspace/
 COPY config/config.rb /opt/archivesspace/common/config/config.rb

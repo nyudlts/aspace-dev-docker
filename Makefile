@@ -8,6 +8,7 @@ start-mysql:	## start mysql server
 
 init:	## start mysql server
 	docker-compose up -d mysql
+	sleep 10
 	docker-compose exec mysql mysql -u root -ppassword -e 'create database archivesspace default character set utf8;'
 	docker-compose exec mysql mysql -u root -ppassword -e "grant all on archivesspace.* to 'archivesspace'@'%' identified by 'archivesspace';"
 	docker-compose up -d aspace
@@ -30,6 +31,11 @@ aspace-shell:	## access apsace container shell
 
 nuke-db:	## access apsace container shell
 	docker-compose exec aspace /opt/arcivesspace/build/run db:nuke
+
+nuke:	## access apsace container shell
+	docker-compose down
+	docker system prune -a
+	docker volume prune
 
 start-frontend:	## start aspace frontend
 	docker-compose exec aspace /opt/archivesspace/build/run frontend:devserver
