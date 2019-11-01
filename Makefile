@@ -8,7 +8,8 @@ start-mysql:	## start mysql server
 
 init:	## start mysql server
 	docker-compose up -d mysql
-	sleep 10
+	## Test condition from https://stackoverflow.com/questions/25503412/how-do-i-know-when-my-docker-mysql-container-is-up-and-mysql-is-ready-for-taking (answer by Matt Kramer)
+	until docker container exec aspace-dev-docker_mysql_1 mysql --user=root --password=password -e "SELECT 1" >/dev/null 2>&1; do : ; done
 	docker-compose exec mysql mysql -u root -ppassword -e 'create database archivesspace default character set utf8;'
 	docker-compose exec mysql mysql -u root -ppassword -e "grant all on archivesspace.* to 'archivesspace'@'%' identified by 'archivesspace';"
 	docker-compose up -d aspace
